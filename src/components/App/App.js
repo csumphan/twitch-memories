@@ -34,8 +34,10 @@ export default class App extends React.Component{
     }
 
     componentDidMount(){
+        console.log('twitch', this.twitch)
         if(this.twitch){
             this.twitch.onAuthorized((auth)=>{
+                console.log(auth)
                 this.Authentication.setToken(auth.token, auth.userId)
                 if(!this.state.finishedLoading){
                     // if the component hasn't finished loading (as in we've not set up after getting a token), let's set it up now.
@@ -72,7 +74,7 @@ export default class App extends React.Component{
     }
     
     render(){
-        console.log('blah')
+        console.log('blah', this.state)
         if(this.state.finishedLoading && this.state.isVisible){
             return (
                 <div className="App">
@@ -88,6 +90,7 @@ export default class App extends React.Component{
         }else{
             return (
                 <div className="App">
+                    no loaded
                 </div>
             )
         }
